@@ -7,15 +7,13 @@ import { DefaultSeo } from 'next-seo'
 import { ToastContainer } from 'react-toastify'
 
 import 'react-toastify/dist/ReactToastify.css'
-import s from './App.module.scss'
+import s from './app.module.scss'
 import '@/styles/global.scss'
 
-import { Footer } from '@/components/Footer/Footer'
-import { Header } from '@/components/Header/Header'
-import ResponsiveDrawer from '@/components/NavPane/NavPane'
+import { Header, Footer, NavPane } from '@/components'
 import { usePageLoading } from '@/hooks'
 import { Theme } from '@/layouts'
-import { GlobalStyles, v } from '@/styles'
+import { v } from '@/styles'
 
 import '@/styles/normalize.scss'
 
@@ -43,7 +41,11 @@ export default function App({ Component, pageProps, router }: AppProps) {
           url,
           description: 'The Next js template from Mick',
           site_name: 'Next js template by Mick',
-          images: [],
+          images: [
+            {
+              url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Cat_August_2010-4.jpg/181px-Cat_August_2010-4.jpg',
+            },
+          ],
         }}
         canonical={url}
       />
@@ -58,7 +60,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
               component='nav'
               sx={{ width: { sm: 0, md: v.navbarWidth }, flexShrink: { sm: 0 } }}
             >
-              <ResponsiveDrawer />
+              <NavPane />
             </Box>
             <Box sx={{ width: '100%' }}>
               <AnimatePresence initial={false} onExitComplete={() => window.scrollTo(0, 0)}>

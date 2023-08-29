@@ -1,6 +1,5 @@
-import s from './Footer.module.scss'
-
-import { FooterContent } from '@/components/Footer/FooterContent'
+import { FooterContent } from './footer-content'
+import s from './footer.module.scss'
 
 export const Footer = () => {
   return (

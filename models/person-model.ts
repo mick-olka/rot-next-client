@@ -28,6 +28,7 @@ export interface I_PeopleFilter {
 }
 
 export interface I_Person extends Document {
+  _id: string
   name: string
   phone: string
   age: number

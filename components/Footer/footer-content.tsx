@@ -1,8 +1,8 @@
 import Image from 'next/image'
 
-import s from './Footer.module.scss'
+import s from './footer.module.scss'
+import { SocialLinks } from './social-links'
 
-import { SocialLinks } from '@/components/Footer/SocialLinks'
 import Logo from '@/public/logo.svg'
 
 export const FooterContent = () => {

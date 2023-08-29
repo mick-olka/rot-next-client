@@ -4,7 +4,7 @@
   max-width: 1520px;
   width: 100%;
   margin: 0 auto;
-  padding: 0 16px 7px;
+  padding: 0 14px 7px;
   display: flex;
   flex-direction: column;
   flex: 1 0 auto;
@@ -30,7 +30,7 @@
 }
 
 .BlockHeading {
-  color: #000;
+  color: $textBlack;
   font-size: 1.125em;
   font-weight: 500;
   margin-bottom: 26px;
@@ -45,11 +45,11 @@
 
   & li {
     line-height: 30px;
-    color: #000;
+    color: $textBlack;
 
     & a {
       text-decoration: none;
-      color: #000;
+      color: $textBlack;
     }
   }
 }
@@ -59,7 +59,7 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  padding: 14px 0;
+  padding: 0;
   margin: 10px 0 0 0;
   border-top: 1px solid #999;
   color: $textBlack;
@@ -69,7 +69,6 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-
   gap: 24px;
   margin: 2rem;
 }

@@ -1,4 +1,3 @@
-import { Box } from '@mui/material'
 import { motion } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import React from 'react'

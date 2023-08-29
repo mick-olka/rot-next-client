@@ -15,13 +15,13 @@ import Link from 'next/link'
 import { useState } from 'react'
 
 import { links } from './data'
-import s from './NavPane.module.scss'
+import s from './nav-pane.module.scss'
 
 import Logo from '@/public/logo.svg'
 
 import { v } from '@/styles/variables'
 
-export default function ResponsiveDrawer() {
+export const NavPane = () => {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   const handleDrawerToggle = () => {

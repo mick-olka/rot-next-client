@@ -1,0 +1,12 @@
+.Pane {
+  margin: 1rem;
+}
+
+.Grid {
+  margin: 1rem;
+  display: grid;
+  gap: 2rem;
+  grid-auto-columns: min-content;
+  /* grid-auto-columns: 100px; */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}

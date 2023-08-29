@@ -2,7 +2,7 @@ import { Avatar, Box, Typography } from '@mui/material'
 
 import React from 'react'
 
-import { SquareCard } from '@/components/Card/Card'
+import { SquareCard } from '@/components/card'
 import { I_Person } from '@/models'
 
 export const PersonCard = ({ data, onClick }: { data: I_Person; onClick: () => void }) => {

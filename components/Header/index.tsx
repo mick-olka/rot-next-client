@@ -1,6 +1,6 @@
-import s from './Header.module.scss'
+import s from './header.module.scss'
 
-import { HeaderContent } from '@/components/Header/HeaderContent'
+import { HeaderContent } from '@/components/header/header-content'
 
 export const Header = () => {
   return (

@@ -1,26 +1,20 @@
 import { Box } from '@mui/material'
-import Link from 'next/link'
 import React from 'react'
 
-import * as S from './styles'
+import s from './HomePage.module.scss'
 
-import { SquareCard } from '../Card/Card'
-import { labs } from '../NavPane/data'
-
-import { useGetProductsList } from '@/hooks'
 import { I_ProductsListRes } from '@/models'
-import { SGridPane } from '@/styles'
 
 export const HomePage = ({ data }: { data: I_ProductsListRes }) => {
   // const { data } = useGetProductsList()
 
   return (
-    <S.Pane>
+    <div className={s.Pane}>
       <h1>HomePage</h1>
-      <SGridPane>
+      <div className={s.Grid}>
         <ProductsList products_data={data} />
-      </SGridPane>
-    </S.Pane>
+      </div>
+    </div>
   )
 }
 
