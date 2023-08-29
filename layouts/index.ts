@@ -1,2 +1,1 @@
-export * from './main/main-layout'
-export * from './theme/Theme'
+export * from './main'

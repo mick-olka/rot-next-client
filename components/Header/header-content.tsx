@@ -4,14 +4,13 @@ import Link from 'next/link'
 
 import { useRouter } from 'next/router'
 
-import s from './Header.module.scss'
+import s from './header.module.scss'
 
 import Logo from '@/public/logo.svg'
 import { getLocalesList } from '@/utils/constants'
 
 export const HeaderContent = () => {
-  const router = useRouter()
-  const { pathname } = router
+  const { asPath } = useRouter()
   const list = getLocalesList()
   return (
     <>
@@ -26,7 +25,7 @@ export const HeaderContent = () => {
       <Box>
         {list.map((l) => (
           <p key={l}>
-            <Link href={pathname} locale={l}>
+            <Link href={asPath} locale={l}>
               {l}
             </Link>
           </p>

@@ -12,8 +12,7 @@ import '@/styles/global.scss'
 
 import { Header, Footer, NavPane } from '@/components'
 import { usePageLoading } from '@/hooks'
-import { Theme } from '@/layouts'
-import { v } from '@/styles'
+import { vars } from '@/styles'
 
 import '@/styles/normalize.scss'
 
@@ -34,7 +33,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <DefaultSeo
-        titleTemplate='RotangUA %s'
+        titleTemplate='R.UA %s'
         openGraph={{
           type: 'website',
           locale: 'en_IE',
@@ -49,28 +48,25 @@ export default function App({ Component, pageProps, router }: AppProps) {
         }}
         canonical={url}
       />
-      <Theme>
-        {/* <GlobalStyles /> */}
-        <ToastContainer hideProgressBar autoClose={1000} />
-        <div className={(s.Wrapper, roboto.className)}>
-          {isPageLoading && <LinearProgress sx={{ minHeight: '4px' }} />}
-          <Header />
-          <div className={s.MainContent}>
-            <Box
-              component='nav'
-              sx={{ width: { sm: 0, md: v.navbarWidth }, flexShrink: { sm: 0 } }}
-            >
-              <NavPane />
-            </Box>
-            <Box sx={{ width: '100%' }}>
-              <AnimatePresence initial={false} onExitComplete={() => window.scrollTo(0, 0)}>
-                {!isPageLoading && <Component {...pageProps} />}
-              </AnimatePresence>
-              <Footer />
-            </Box>
-          </div>
+      <ToastContainer hideProgressBar autoClose={1000} />
+      <div className={(s.Wrapper, roboto.className)}>
+        {isPageLoading && <LinearProgress sx={{ minHeight: '4px' }} />}
+        <Header />
+        <div className={s.MainContent}>
+          <Box
+            component='nav'
+            sx={{ width: { sm: 0, md: vars.v.navbarWidth }, flexShrink: { sm: 0 } }}
+          >
+            <NavPane />
+          </Box>
+          <Box sx={{ width: '100%' }}>
+            <AnimatePresence initial={false} onExitComplete={() => window.scrollTo(0, 0)}>
+              {!isPageLoading && <Component {...pageProps} />}
+            </AnimatePresence>
+            <Footer />
+          </Box>
         </div>
-      </Theme>
+      </div>
     </>
   )
 }

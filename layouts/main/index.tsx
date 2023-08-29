@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import React from 'react'
 
-import s from './MainLayout.module.scss'
+import s from './mainLayout.module.scss'
 
 interface LayoutProps {
   children: React.ReactNode

@@ -1,6 +1,0 @@
-export { PersonForm } from './PersonForm/PersonForm'
-export { PersonCard } from './PersonCard/PersonCard'
-export { PersonGrid } from './PersonGrid/PersonGrid'
-export { PersonProfile } from './PersonProfile/PersonProfile'
-export { PeopleTable } from './PeopleTable/PeopleTable'
-export { PeopleSlider } from './PeopleSlider/PeopleSlider'

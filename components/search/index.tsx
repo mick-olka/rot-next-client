@@ -1,10 +1,8 @@
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined'
-import { TextField } from '@mui/material'
+import { IconButton, TextField } from '@mui/material'
 import { ChangeEvent, useState } from 'react'
 
-import * as S from './styles'
-
-import { RoundButton } from '@/styles/general'
+import s from './search.module.scss'
 
 export const SearchField = ({
   value,
@@ -24,7 +22,7 @@ export const SearchField = ({
     onSearch(text)
   }
   return (
-    <S.Pane>
+    <div className={s.pane}>
       <TextField
         value={text}
         onChange={handleChange}
@@ -32,9 +30,9 @@ export const SearchField = ({
         size='small'
         // sx={{ '& input': { fontSize: '1.2rem' } }}
       />
-      <RoundButton onClick={triggerSearch} sx={{ marginLeft: '0.5rem' }} variant='contained'>
+      <IconButton className={s.round_btn} onClick={triggerSearch} sx={{ marginLeft: '0.5rem' }}>
         <SearchOutlinedIcon />
-      </RoundButton>
-    </S.Pane>
+      </IconButton>
+    </div>
   )
 }
