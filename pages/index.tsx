@@ -16,12 +16,14 @@ export async function getStaticProps({ locale }: { locale: E_Locales }) {
 
 export default function Page({
   fallback,
+  locale,
 }: {
   fallback: { [E_ApiPaths.products]: I_ProductsListRes }
+  locale: E_Locales
 }) {
   return (
     <SWRConfig value={{ fallback }}>
-      <ProductsPage />
+      <ProductsPage locale={locale} />
     </SWRConfig>
   )
 }

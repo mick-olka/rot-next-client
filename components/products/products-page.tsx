@@ -6,8 +6,9 @@ import { SquareCard } from '../'
 
 import { useGetProductsList } from '@/hooks'
 import { MainLayout } from '@/layouts'
+import { E_Locales } from '@/models'
 
-export const ProductsPage = () => {
+export const ProductsPage = ({ locale }: { locale: E_Locales }) => {
   const { data } = useGetProductsList()
   return (
     <MainLayout description='Products Page' title='Products'>
@@ -15,7 +16,7 @@ export const ProductsPage = () => {
         {data.docs.map((p) => (
           <SquareCard key={p._id}>
             <p>
-              <Link href={`/products/${p._id}`}>{p.name.ua}</Link>
+              <Link href={`/products/${p._id}`}>{p.name[locale]}</Link>
             </p>
           </SquareCard>
         ))}

@@ -6,8 +6,9 @@ import { SquareCard } from '..'
 
 import { useGetCollectionsList } from '@/hooks'
 import { MainLayout } from '@/layouts'
+import { E_Locales } from '@/models'
 
-export const CollectionsPage = () => {
+export const CollectionsPage = ({ locale }: { locale: E_Locales }) => {
   const { data } = useGetCollectionsList()
   return (
     <MainLayout description='Collections' title='Categories'>
@@ -15,7 +16,7 @@ export const CollectionsPage = () => {
         {data.map((p) => (
           <SquareCard key={p._id}>
             <p>
-              <Link href={`/collections/${p._id}`}>{p.name.ua}</Link>
+              <Link href={`/collections/${p._id}`}>{p.name[locale]}</Link>
             </p>
           </SquareCard>
         ))}
