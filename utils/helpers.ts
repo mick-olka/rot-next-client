@@ -3,7 +3,7 @@ import { toast } from 'react-toastify'
 
 import { api_url } from './constants'
 
-import { I_PeopleFilter } from '@/models'
+import { E_Locales, I_PeopleFilter } from '@/models'
 
 export const toasterPending = <T>(
   method: Promise<T>,
@@ -66,4 +66,9 @@ export const getFilterForSearch = (
   if (filter.country) f_arr.push({ country: filter.country })
   if (filter.dob) f_arr.push({ dob: filter.dob })
   return f_arr.length ? { $and: f_arr } : {}
+}
+
+export const getLocaleSafe = (l: string) => {
+  if (Object.keys(E_Locales).includes(l)) return l as E_Locales
+  return E_Locales.ua
 }

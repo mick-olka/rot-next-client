@@ -15,6 +15,7 @@ import { usePageLoading } from '@/hooks'
 import { vars } from '@/styles'
 
 import '@/styles/normalize.scss'
+import { local_url } from '@/utils'
 
 const roboto = Roboto_Condensed({
   subsets: ['cyrillic-ext', 'latin-ext'],
@@ -24,7 +25,7 @@ const roboto = Roboto_Condensed({
 
 export default function App({ Component, pageProps, router }: AppProps) {
   const { isPageLoading } = usePageLoading()
-  const url = `http://localhost:3000${router.route}`
+  const url = `${local_url}${router.route}`
   return (
     <>
       <Head>

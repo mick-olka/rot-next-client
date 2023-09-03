@@ -1,3 +1,5 @@
 export * from './person-model'
-export * from './product-model'
+export * from './products-model'
 export * from './api-model'
+export * from './locales-model'
+export * from './collections-model'
