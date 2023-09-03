@@ -5,9 +5,11 @@ import s from './header.module.scss'
 
 import { LocalesSelector } from './locales-selector'
 
+import { useGetTextByName } from '@/hooks'
 import Logo from '@/public/logo.svg'
 
 export const Header = () => {
+  const ht = useGetTextByName('header_text')
   return (
     <header className={s.Header}>
       <div className={s.LogoLinksNavigateWrapper}>
@@ -16,7 +18,7 @@ export const Header = () => {
         </Link>
       </div>
       <div className={s.HeaderContentCenter}>
-        <p>Lorem ipsum dolor sit!</p>
+        <p>{ht}</p>
       </div>
       <LocalesSelector />
     </header>

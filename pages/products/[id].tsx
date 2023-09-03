@@ -14,6 +14,8 @@ export async function getStaticPaths() {
   }
 }
 
+const path = E_ApiPaths.products
+
 export async function getStaticProps({ params }: { params: { id: string } }) {
   const product = await getProductById(params.id)
   if (!product) return { notFound: true }
@@ -22,20 +24,14 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
       props: {
         id: params.id,
         fallback: {
-          [E_ApiPaths.products + params.id]: product,
+          [path + params.id]: product,
         },
       },
       revalidate: 60,
     }
 }
 
-export default function Page({
-  fallback,
-  id,
-}: {
-  fallback: { [E_ApiPaths.products]: I_Product }
-  id: string
-}) {
+export default function Page({ fallback, id }: { fallback: { [path]: I_Product }; id: string }) {
   return (
     <SWRConfig value={{ fallback }}>
       <ProductPage id={id} />

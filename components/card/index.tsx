@@ -5,9 +5,9 @@ import s from './card.module.scss'
 
 export const SquareCard = ({ children }: { children: React.ReactNode }) => {
   return (
-    <Card className={s.card_pane} variant='outlined' sx={{ height: '100%', padding: 0 }}>
-      <CardActionArea sx={{ height: '100%', padding: 0 }}>
-        <CardContent sx={{ height: '100%', padding: 0 }}>{children}</CardContent>
+    <Card className={s.card_pane} variant='outlined'>
+      <CardActionArea className={s.action_area}>
+        <CardContent className={s.content}>{children}</CardContent>
       </CardActionArea>
     </Card>
   )

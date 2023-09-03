@@ -1,5 +1,8 @@
-export const links: { path: string; name: string }[] = [
-  { path: '/', name: 'Home' },
-  { path: '/collections', name: 'Categories' },
-  { path: '/about', name: 'About' },
+import { LocalesObjectT } from '@/models'
+import { t } from '@/utils'
+
+export const links: { path: string; name: LocalesObjectT<string> }[] = [
+  { path: '/', name: t.sidebar.home },
+  { path: '/collections', name: t.sidebar.categories },
+  { path: '/about', name: t.sidebar.about },
 ]

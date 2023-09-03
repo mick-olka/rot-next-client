@@ -7,6 +7,7 @@ export const local_url = 'http://localhost:3000'
 export enum E_ApiPaths {
   products = '/products/',
   collections = '/collections/',
+  text = '/text_blocks/',
 }
 
 export const getLocalesList = () => Object.values(E_Locales).map((l) => l)

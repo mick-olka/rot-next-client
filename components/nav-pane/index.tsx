@@ -12,6 +12,7 @@ import {
 } from '@mui/material'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 
 import { links } from './data'
@@ -20,9 +21,12 @@ import s from './nav-pane.module.scss'
 import Logo from '@/public/logo.svg'
 
 import { v } from '@/styles/variables'
+import { getLocaleSafe } from '@/utils'
 
 export const NavPane = () => {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const { locale } = useRouter()
+  const lan = getLocaleSafe(locale || 'ua')
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
@@ -44,7 +48,7 @@ export const NavPane = () => {
                 {/* <ListItemIcon>
                 <AddRoundedIcon />
               </ListItemIcon> */}
-                <ListItemText primary={l.name} />
+                <ListItemText primary={l.name[lan]} />
               </ListItemButton>
             </ListItem>
           </Link>

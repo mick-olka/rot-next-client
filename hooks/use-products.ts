@@ -15,7 +15,7 @@ export const getProductsList = async (): Promise<I_ProductsListRes> => {
 }
 
 export const getProductById = async (id: string): Promise<I_Product | null> => {
-  const res = await fetch(getURL(E_ApiPaths.products) + id)
+  const res = await fetch(getURL(path) + id)
   if (res.ok) {
     return await res.json()
   } else return null

@@ -72,3 +72,11 @@ export const getLocaleSafe = (l: string) => {
   if (Object.keys(E_Locales).includes(l)) return l as E_Locales
   return E_Locales.ua
 }
+
+export const lanEnumToObject = <T>(value: T): { [key in E_Locales]: T } => {
+  return {
+    en: value,
+    ua: value,
+    de: value,
+  }
+}

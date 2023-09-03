@@ -19,3 +19,15 @@ export const useGetCollectionsList = () => {
   const data = useSWR<I_Collection[]>(path, fetcher)
   return data as I_SWR_Fallback<I_Collection[]>
 }
+
+export const getCollectionById = async (id: string): Promise<I_Collection | null> => {
+  const res = await fetch(getURL(path) + id)
+  if (res.ok) {
+    return await res.json()
+  } else return null
+}
+
+export const useGetCollectionById = (id: string) => {
+  const data = useSWR<I_Collection>(path + id, fetcher)
+  return data as I_SWR_Fallback<I_Collection>
+}
