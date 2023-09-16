@@ -1,4 +1,4 @@
-import { Box, LinearProgress } from '@mui/material'
+import { Box, LinearProgress, Skeleton } from '@mui/material'
 import { AnimatePresence } from 'framer-motion'
 import type { AppProps } from 'next/app'
 import { Roboto_Condensed } from 'next/font/google'
@@ -62,7 +62,11 @@ export default function App({ Component, pageProps, router }: AppProps) {
           </Box>
           <Box sx={{ width: '100%' }}>
             <AnimatePresence initial={false} onExitComplete={() => window.scrollTo(0, 0)}>
-              {!isPageLoading && <Component {...pageProps} />}
+              {isPageLoading ? (
+                <Skeleton height={'80vh'} width={'100%'} />
+              ) : (
+                <Component {...pageProps} />
+              )}
             </AnimatePresence>
             <Footer />
           </Box>
