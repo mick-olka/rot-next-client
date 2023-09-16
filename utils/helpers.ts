@@ -80,3 +80,8 @@ export const lanEnumToObject = <T>(value: T): { [key in E_Locales]: T } => {
     de: value,
   }
 }
+
+export const lineCut = (str: string, len: number): string => {
+  if (str.length > len) return str.slice(0, len) + '...'
+  return str
+}

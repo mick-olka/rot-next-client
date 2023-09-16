@@ -19,7 +19,7 @@ import { local_url } from '@/utils'
 
 const roboto = Roboto_Condensed({
   subsets: ['cyrillic-ext', 'latin-ext'],
-  weight: '400',
+  weight: ['300', '400', '700'],
   preload: true,
 })
 

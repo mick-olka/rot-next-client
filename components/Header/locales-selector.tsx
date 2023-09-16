@@ -63,6 +63,7 @@ export const LocalesSelector = () => {
     <Box>
       <ButtonGroup variant='contained' ref={anchorRef}>
         <Button
+          sx={{ padding: 0 }}
           variant='outlined'
           size='small'
           aria-controls={open ? 'split-button-menu' : undefined}

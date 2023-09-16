@@ -2,8 +2,8 @@
 
 .card_pane {
   background-color: #fff;
-  height: 250px;
-  width: 250px;
+  height: 260px;
+  width: 100%;
   padding: 0;
 }
 
@@ -11,6 +11,7 @@
   @include flex_center;
   height: 100%;
   padding: 5px;
+  padding-top: 15px;
 }
 
 .action_area {
