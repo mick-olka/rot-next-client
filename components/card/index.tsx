@@ -3,9 +3,19 @@ import React from 'react'
 
 import s from './card.module.scss'
 
-export const SquareCard = ({ children }: { children: React.ReactNode }) => {
+export const SquareCard = ({
+  children,
+  height,
+}: {
+  height?: string
+  children: React.ReactNode
+}) => {
   return (
-    <Card className={s.card_pane} variant='outlined'>
+    <Card
+      className={s.card_pane}
+      variant='outlined'
+      sx={height ? { height: height + ' !important' } : {}}
+    >
       <CardActionArea className={s.action_area}>
         <CardContent className={s.content}>{children}</CardContent>
       </CardActionArea>

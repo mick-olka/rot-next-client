@@ -16,10 +16,11 @@ export const CollectionsPage = ({ locale }: { locale: E_Locales }) => {
   return (
     <MainLayout description='Collections' title='Categories'>
       <CardsGrid
+        cardHeight='120px'
         items={data}
         renderItem={(c) => (
           <Link className={s.card_link} href={`${path}${c.url_name}`}>
-            <Typography fontFamily='inherit' fontSize='30px'>
+            <Typography fontFamily='inherit' fontSize='25px'>
               {c.name[locale]}
             </Typography>
           </Link>
