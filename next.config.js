@@ -10,7 +10,7 @@ const nextConfig = {
     styledComponents: true,
   },
   images: {
-    domains: ['rotang.ua', 'localhost', '192.168.1.119'],
+    domains: ['rotang.ua', 'localhost', '192.168.1.119', '213.217.8.92'],
   },
   i18n: {
     locales: ['ua', 'de', 'en'],
