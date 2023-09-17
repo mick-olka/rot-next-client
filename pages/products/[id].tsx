@@ -2,7 +2,7 @@ import { SWRConfig } from 'swr'
 
 import { ProductPage } from '@/components'
 import { getProductById, getProductsList } from '@/hooks'
-import { I_Product } from '@/models'
+import { E_Locales, I_Product } from '@/models'
 import { E_ApiPaths } from '@/utils'
 
 export async function getStaticPaths() {
@@ -16,7 +16,13 @@ export async function getStaticPaths() {
 
 const path = E_ApiPaths.products
 
-export async function getStaticProps({ params }: { params: { id: string } }) {
+export async function getStaticProps({
+  params,
+  locale,
+}: {
+  params: { id: string }
+  locale: E_Locales
+}) {
   const product = await getProductById(params.id)
   if (!product) return { notFound: true }
   else
@@ -26,15 +32,24 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
         fallback: {
           [path + params.id]: product,
         },
+        locale,
       },
       revalidate: 60,
     }
 }
 
-export default function Page({ fallback, id }: { fallback: { [path]: I_Product }; id: string }) {
+export default function Page({
+  fallback,
+  id,
+  locale,
+}: {
+  locale: E_Locales
+  fallback: { [path]: I_Product }
+  id: string
+}) {
   return (
     <SWRConfig value={{ fallback }}>
-      <ProductPage id={id} />
+      <ProductPage id={id} locale={locale} />
     </SWRConfig>
   )
 }

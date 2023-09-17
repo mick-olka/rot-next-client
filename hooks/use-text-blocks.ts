@@ -25,5 +25,5 @@ export const useGetTextByName = (name: string): string | null => {
   const data = useSWR<I_TextBlock>(path + name, fetcher)
   if (data.error) return null
   if (data.data && data.data._id) return data.data.text[getLocaleSafe(locale || 'ua')]
-  return '...'
+  return ''
 }

@@ -11,10 +11,10 @@ export const FooterContent = () => {
       <div className={s.FooterIconWrapper}>
         <Image alt={'logo'} src={Logo} priority />
       </div>
-      <div>Copyright © 2023 LoremIpsum. All rights reserve.</div>
-      <div className={s.IconsBlock}>
+      <div>Copyright © 2023 [Rotang.ua] All rights reserve.</div>
+      {/* <div className={s.IconsBlock}>
         <SocialLinks />
-      </div>
+      </div> */}
     </div>
   )
 }

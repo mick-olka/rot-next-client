@@ -4,5 +4,5 @@ import { t } from '@/utils'
 export const links: { path: string; name: LocalesObjectT<string> }[] = [
   { path: '/', name: t.sidebar.home },
   { path: '/collections', name: t.sidebar.categories },
-  { path: '/about', name: t.sidebar.about },
+  { path: '/contacts', name: t.sidebar.contacts },
 ]

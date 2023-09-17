@@ -8,7 +8,7 @@ export const t = {
   sidebar: {
     home: p({ ua: 'Головна', en: 'Home', de: 'Main' }),
     categories: p({ ua: 'Категорії', en: 'Categories', de: 'Categories' }),
-    about: p({ ua: 'Інформація', en: 'About', de: 'About' }),
+    contacts: p({ ua: 'Про нас', en: 'About us', de: 'About us' }),
   },
   header: {
     header_text: p({ ua: 'Меблі з ротангу', en: 'Rotang furniture', de: 'Rotang furniture' }),

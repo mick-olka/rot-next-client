@@ -1,6 +1,6 @@
 import useSWR from 'swr'
 
-import { I_Product, I_ProductsListRes, I_SWR_Fallback } from '@/models'
+import { I_Product, I_ProductExtended, I_ProductsListRes, I_SWR_Fallback } from '@/models'
 import { E_ApiPaths } from '@/utils/constants'
 import { fetcher, getURL } from '@/utils/helpers'
 
@@ -37,6 +37,6 @@ export const useGetProductsList = () => {
 }
 
 export const useGetProductById = (id: string) => {
-  const data = useSWR<I_Product>(E_ApiPaths.products + id, fetcher)
-  return data as I_SWR_Fallback<I_Product>
+  const data = useSWR<I_ProductExtended>(E_ApiPaths.products + id, fetcher)
+  return data as I_SWR_Fallback<I_ProductExtended>
 }

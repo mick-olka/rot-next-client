@@ -11,7 +11,7 @@
 }
 
 .FooterIconWrapper {
-  margin-bottom: 14px;
+  margin: 14px;
 
   & img {
     width: 196px;
@@ -61,7 +61,7 @@
   flex-wrap: wrap;
   padding: 0;
   margin: 10px 0 0 0;
-  border-top: 1px solid #999;
+  border-top: 1px solid #bbb;
   color: $textBlack;
 }
 

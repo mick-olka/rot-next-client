@@ -1,5 +1,5 @@
 import PhoneInTalkRoundedIcon from '@mui/icons-material/PhoneInTalkRounded'
-import { IconButton, Menu, MenuItem } from '@mui/material'
+import { IconButton, Menu, MenuItem, Skeleton } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import Image from 'next/image'
@@ -13,6 +13,7 @@ import { LocalesSelector } from './locales-selector'
 
 import { useGetTextByName } from '@/hooks'
 import Logo from '@/public/logo.svg'
+import { phones } from '@/utils'
 
 export const Header = () => {
   const theme = useTheme()
@@ -31,8 +32,8 @@ export const Header = () => {
     <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
       <IconButton
         sx={{ bgcolor: '#ddd' }}
-        id='basic-button'
-        aria-controls={open ? 'basic-menu' : undefined}
+        id='phone-btn'
+        aria-controls={open ? 'phones-menu' : undefined}
         aria-haspopup='true'
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
@@ -52,29 +53,25 @@ export const Header = () => {
         {!matches && buttons}
       </div>
       <div className={s.HeaderContentCenter} style={{ maxWidth: matches ? '50%' : '100%' }}>
-        <p>{ht}</p>
+        <p>{ht || ''}</p>
       </div>
       {matches && buttons}
       <Menu
-        id='basic-menu'
+        id='phones-menu'
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
         MenuListProps={{
-          'aria-labelledby': 'basic-button',
+          'aria-labelledby': 'phone-btn',
         }}
         sx={{ top: '5px' }}
       >
         <div style={{ padding: '10px', textAlign: 'center', fontWeight: '600' }}>09:00 - 20:00</div>
-        <MenuItem>
-          <a href='tel:+05890000111'>0-589-0000111</a>
-        </MenuItem>
-        <MenuItem>
-          <a href='tel:+05890000111'>0-589-0000111</a>
-        </MenuItem>
-        <MenuItem>
-          <a href='tel:+05890000111'>0-589-0000111</a>
-        </MenuItem>
+        {phones.map((p) => (
+          <MenuItem key={p.label} style={{ textDecoration: 'underline' }}>
+            <a href={p.link}>{p.label}</a>
+          </MenuItem>
+        ))}
       </Menu>
     </header>
   )
