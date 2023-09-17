@@ -1,6 +1,6 @@
 export * from './products'
 export * from './card'
-export * from './header'
+export { Header } from './header'
 export * from './footer'
 export * from './nav-pane'
 export * from './dialogs'
