@@ -3,7 +3,7 @@ import { toast } from 'react-toastify'
 
 import { api_url } from './constants'
 
-import { E_Locales, I_PeopleFilter } from '@/models'
+import { E_Locales } from '@/models'
 
 export const toasterPending = <T>(
   method: Promise<T>,
@@ -49,24 +49,6 @@ export const swrMutationCreator = async <T>(
 export const getURL = (path: string): string => api_url + path
 
 export const fetcher = (url: string) => fetch(getURL(url)).then((res) => res.json())
-
-export const getFilterForSearch = (
-  // search_string: string | undefined,
-  filter: Partial<I_PeopleFilter>,
-  fields: string[],
-): object => {
-  const f_arr: object[] = []
-  if (filter.query) {
-    const search_words = filter.query.split(' ').join('|')
-    const regex = new RegExp(search_words, 'i') // i for case insensitive
-    const regex_fields = fields.map((f) => ({ [f]: { $regex: regex } }))
-    f_arr.push({ $or: regex_fields })
-  }
-  if (filter.age) f_arr.push({ age: filter.age })
-  if (filter.country) f_arr.push({ country: filter.country })
-  if (filter.dob) f_arr.push({ dob: filter.dob })
-  return f_arr.length ? { $and: f_arr } : {}
-}
 
 export const getLocaleSafe = (l: string) => {
   if (Object.keys(E_Locales).includes(l)) return l as E_Locales
