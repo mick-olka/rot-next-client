@@ -12,6 +12,7 @@ import {
   SelectChangeEvent,
   Typography,
 } from '@mui/material'
+
 import { useMemo, useState } from 'react'
 
 import { Gallery } from '../gallery'
@@ -19,7 +20,7 @@ import { Gallery } from '../gallery'
 import { useGetProductById, useGetTextByName } from '@/hooks'
 import { MainLayout } from '@/layouts'
 import { E_Locales } from '@/models'
-import { phones } from '@/utils'
+import { phones, t } from '@/utils'
 
 export const ProductPage = ({ id, locale }: { id: string; locale: E_Locales }) => {
   const { data } = useGetProductById(id)
@@ -51,6 +52,7 @@ export const ProductPage = ({ id, locale }: { id: string; locale: E_Locales }) =
     setAnchorEl(null)
   }
   // const description = data.description[locale].split('\n\n')
+  const l = t.product
   return (
     <MainLayout title={data.name[locale]} description='Some Product'>
       <Card>
@@ -78,14 +80,14 @@ export const ProductPage = ({ id, locale }: { id: string; locale: E_Locales }) =
               <Box sx={{ padding: '1rem' }}>
                 <Box sx={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
                   <FormControl sx={{ minWidth: '200px', flexGrow: 1 }} size='small'>
-                    <InputLabel id='select-color'>Color</InputLabel>
+                    <InputLabel id='select-color'>{l.color[locale]}</InputLabel>
                     <Select
                       labelId='select-color'
                       value={color}
-                      label='Color'
+                      label={l.color[locale]}
                       onChange={handleChange}
                     >
-                      <MenuItem value={'0'}>All</MenuItem>
+                      <MenuItem value={'0'}>{l.all[locale]}</MenuItem>
                       {colors_list.map((c) => (
                         <MenuItem key={c.id} value={c.id}>
                           {c.label}
@@ -105,7 +107,7 @@ export const ProductPage = ({ id, locale }: { id: string; locale: E_Locales }) =
                   >
                     <PhoneInTalkRoundedIcon />
                     <Typography marginLeft='10px' fontFamily='inherit'>
-                      Замовити
+                      {l.order[locale]}
                     </Typography>
                     <Typography
                       sx={{
@@ -117,7 +119,7 @@ export const ProductPage = ({ id, locale }: { id: string; locale: E_Locales }) =
                         textTransform: 'none',
                       }}
                     >
-                      Задайте нам питання!
+                      {l.ask_us[locale]}
                     </Typography>
                   </Button>
                   <Menu
@@ -144,8 +146,8 @@ export const ProductPage = ({ id, locale }: { id: string; locale: E_Locales }) =
                   <Typography fontSize='25px' fontFamily='inherit'>
                     {data.price * d}
                   </Typography>
-                  <Typography fontSize='15px' marginLeft='5px' color='#888'>
-                    {locale === E_Locales.ua ? ' UAH' : '$'}
+                  <Typography fontSize='25px' marginLeft='5px' color='#888'>
+                    {t.currency[locale]}
                   </Typography>
                 </Box>
                 <Box sx={{ padding: '1rem 0', fontSize: '18px', lineHeight: '25px' }}>

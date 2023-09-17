@@ -19,7 +19,7 @@ export const CollectionsPage = ({ locale }: { locale: E_Locales }) => {
         items={data}
         renderItem={(c) => (
           <Link className={s.card_link} href={`${path}${c.url_name}`}>
-            <Typography fontFamily='inherit' fontSize='35px'>
+            <Typography fontFamily='inherit' fontSize='30px'>
               {c.name[locale]}
             </Typography>
           </Link>

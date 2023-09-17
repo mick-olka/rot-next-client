@@ -4,4 +4,5 @@
 .card_link {
   @include fill_parent;
   @include flex_center;
+  padding: 2rem;
 }

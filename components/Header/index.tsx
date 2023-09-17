@@ -1,5 +1,5 @@
 import PhoneInTalkRoundedIcon from '@mui/icons-material/PhoneInTalkRounded'
-import { IconButton, Menu, MenuItem, Skeleton } from '@mui/material'
+import { IconButton, Menu, MenuItem, Skeleton, Typography } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import Image from 'next/image'
@@ -29,7 +29,7 @@ export const Header = () => {
   }
 
   const buttons = (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
       <IconButton
         sx={{ bgcolor: '#ddd' }}
         id='phone-btn'
@@ -69,7 +69,9 @@ export const Header = () => {
         <div style={{ padding: '10px', textAlign: 'center', fontWeight: '600' }}>09:00 - 20:00</div>
         {phones.map((p) => (
           <MenuItem key={p.label} style={{ textDecoration: 'underline' }}>
-            <a href={p.link}>{p.label}</a>
+            <a href={p.link}>
+              <Typography fontSize='20px'>{p.label}</Typography>
+            </a>
           </MenuItem>
         ))}
       </Menu>

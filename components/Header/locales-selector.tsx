@@ -4,6 +4,7 @@ import {
   ButtonGroup,
   ClickAwayListener,
   Grow,
+  IconButton,
   MenuItem,
   MenuList,
   Paper,
@@ -15,17 +16,20 @@ import { useRouter } from 'next/router'
 
 import { useRef, useState } from 'react'
 
+import der from './data/imgs/german-r.png'
 import de from './data/imgs/german.png'
+import uar from './data/imgs/ukraine-r.png'
 import ua from './data/imgs/ukraine.png'
+import enr from './data/imgs/united-kingdom-r.png'
 import en from './data/imgs/united-kingdom.png'
 
 import { E_Locales } from '@/models'
 import { getLocaleSafe, getLocalesList } from '@/utils'
 
 const flags: { [key in E_Locales]: StaticImageData } = {
-  de: de,
-  ua: ua,
-  en: en,
+  de: der,
+  ua: uar,
+  en: enr,
 }
 
 export const LocalesSelector = () => {
@@ -61,19 +65,24 @@ export const LocalesSelector = () => {
 
   return (
     <Box>
-      <ButtonGroup variant='contained' ref={anchorRef}>
-        <Button
-          sx={{ padding: 0 }}
-          variant='outlined'
-          size='small'
+      <ButtonGroup
+        variant='contained'
+        ref={anchorRef}
+        sx={{
+          padding: 0,
+          boxShadow: 'none',
+        }}
+      >
+        <IconButton
+          sx={{ padding: 0, paddingTop: '3px' }}
           aria-controls={open ? 'split-button-menu' : undefined}
           aria-expanded={open ? 'true' : undefined}
           aria-label='select language'
           aria-haspopup='menu'
           onClick={handleToggle}
         >
-          <Image src={flags[selectedIndex]} alt='flag' />
-        </Button>
+          <Image src={flags[selectedIndex]} alt='flag' height={38} />
+        </IconButton>
       </ButtonGroup>
       <Popper
         sx={{
@@ -101,7 +110,7 @@ export const LocalesSelector = () => {
                         selected={option === selectedIndex}
                         onClick={(event) => handleMenuItemClick(event, option)}
                       >
-                        <Image src={flags[option]} alt='flag' />
+                        <Image src={flags[option]} alt='flag' height={35} />
                       </MenuItem>
                     </Link>
                   ))}
