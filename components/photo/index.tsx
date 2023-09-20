@@ -4,7 +4,7 @@ import React from 'react'
 
 import { photo_url } from '@/utils'
 
-export const Photo = ({ src, sx }: { src: string; sx?: SxProps }) => {
+export const Photo = ({ src, sizes, sx }: { src: string; sizes?: string; sx?: SxProps }) => {
   return (
     <Box
       sx={{
@@ -16,7 +16,14 @@ export const Photo = ({ src, sx }: { src: string; sx?: SxProps }) => {
         ...sx,
       }}
     >
-      <Image src={photo_url + src} alt={'R'} fill objectFit='contain' priority />
+      <Image
+        src={photo_url + src}
+        alt={'R'}
+        fill
+        sizes={sizes}
+        priority
+        style={{ objectFit: 'contain' }}
+      />
     </Box>
   )
 }

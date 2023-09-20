@@ -49,6 +49,9 @@ export const swrMutationCreator = async <T>(
 export const getURL = (path: string): string => api_url + path
 
 export const fetcher = (url: string) => fetch(getURL(url)).then((res) => res.json())
+export const getFetcher = (query: string) => {
+  return (url: string) => fetch(getURL(url) + query).then((res) => res.json())
+}
 
 export const getLocaleSafe = (l: string) => {
   if (Object.keys(E_Locales).includes(l)) return l as E_Locales

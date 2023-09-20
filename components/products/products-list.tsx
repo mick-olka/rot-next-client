@@ -31,7 +31,11 @@ export const ProductsList = ({
         <Link className={s.card_link} href={`${path}${p._id}`}>
           <Box sx={{ height: '100%', width: '100%' }}>
             <Box sx={{ position: 'relative', height: '70%' }}>
-              <Photo src={p.thumbnail} sx={{ width: '100%', height: '100%' }} />
+              <Photo
+                src={p.thumbnail}
+                sx={{ width: '100%', height: '100%' }}
+                sizes={'140px 100px'}
+              />
             </Box>
             <Box
               sx={{
