@@ -7,3 +7,10 @@ export interface I_TextBlock {
   font: object
   url: string
 }
+
+export enum TextBlocks {
+  main_page_text = 'main_page_text',
+  header_text = 'header_text',
+  dollar = 'dollar',
+  order = 'order',
+}

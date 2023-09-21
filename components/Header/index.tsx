@@ -12,13 +12,14 @@ import s from './header.module.scss'
 import { LocalesSelector } from './locales-selector'
 
 import { useGetTextByName } from '@/hooks'
+import { TextBlocks } from '@/models'
 import Logo from '@/public/logo.svg'
 import { phones } from '@/utils'
 
 export const Header = () => {
   const theme = useTheme()
   const matches = useMediaQuery(theme.breakpoints.up('md'))
-  const ht = useGetTextByName('header_text')
+  const ht = useGetTextByName(TextBlocks.header_text)
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {

@@ -17,15 +17,22 @@ import { useMemo, useState } from 'react'
 
 import { Gallery } from '../gallery'
 
-import { useGetProductById, useGetTextByName } from '@/hooks'
+import { useGetProductById } from '@/hooks'
 import { MainLayout } from '@/layouts'
 import { E_Locales } from '@/models'
 import { phones, t } from '@/utils'
 
-export const ProductPage = ({ id, locale }: { id: string; locale: E_Locales }) => {
+export const ProductPage = ({
+  id,
+  locale,
+  text,
+}: {
+  id: string
+  locale: E_Locales
+  text: { order: string; dollar: string }
+}) => {
   const { data } = useGetProductById(id)
-  const dollar = useGetTextByName('dollar')
-  const d = locale === E_Locales.ua ? Number(dollar) || 37 : 1
+  const d = Number(text.dollar)
   const [color, setColor] = useState('0')
   const colors_list = data.photos.map((p) => ({
     id: p._id,
@@ -51,7 +58,6 @@ export const ProductPage = ({ id, locale }: { id: string; locale: E_Locales }) =
   const handleClose = () => {
     setAnchorEl(null)
   }
-  // const description = data.description[locale].split('\n\n')
   const l = t.product
   return (
     <MainLayout title={data.name[locale]} description='Some Product'>
@@ -107,7 +113,7 @@ export const ProductPage = ({ id, locale }: { id: string; locale: E_Locales }) =
                   >
                     <PhoneInTalkRoundedIcon />
                     <Typography marginLeft='10px' fontFamily='inherit'>
-                      {l.order[locale]}
+                      {text.order || l.order[locale]}
                     </Typography>
                     <Typography
                       sx={{

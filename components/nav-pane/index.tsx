@@ -18,6 +18,8 @@ import { useState } from 'react'
 import { links } from './data'
 import s from './nav-pane.module.scss'
 
+import { Search } from './search'
+
 import Logo from '@/public/logo.svg'
 
 import { v } from '@/styles/variables'
@@ -40,6 +42,7 @@ export const NavPane = () => {
         </Link>
       </Toolbar>
       <Divider />
+      <Search />
       <List>
         {links.map((l) => (
           <Link href={l.path} key={l.path} onClick={() => setMobileOpen(false)}>

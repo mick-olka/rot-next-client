@@ -5,7 +5,7 @@ const p = (o: LocalesObjectT<string>): LocalesObjectT<string> => {
 }
 
 export const t = {
-  currency: p({ ua: '₴', en: '$', de: '$' }),
+  currency: p({ ua: '₴', en: '€', de: '€' }),
   sidebar: {
     home: p({ ua: 'Головна', en: 'Home', de: 'Main' }),
     categories: p({ ua: 'Категорії', en: 'Categories', de: 'Categories' }),

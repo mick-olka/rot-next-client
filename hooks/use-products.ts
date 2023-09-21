@@ -16,7 +16,7 @@ export const getProductsList = async (): Promise<I_ProductsListRes> => {
 }
 
 // for general use
-export const useGetProductsList = (p = 1) => {
+export const useGetProductsList = (p = 1, regex?: string) => {
   // const [page, setPage] = useState(1)
   // if (page) url = url + `?page=${page || 1}`
   // if (filter)
@@ -28,8 +28,9 @@ export const useGetProductsList = (p = 1) => {
   // if (filter.country) url + `&country=${filter.country}`
   useEffect(() => {
     mutate(path)
-  }, [p])
-  const data = useSWR<I_ProductsListRes>(path, getFetcher(`?limit=21&page=${p}`), {
+  }, [p, regex])
+  const query = regex ? `?limit=21&page=${p}&regex=${regex}` : `?limit=21&page=${p}`
+  const data = useSWR<I_ProductsListRes>(path, getFetcher(query), {
     // refreshInterval: 5000,
   })
   return data as I_SWR_Fallback<I_ProductsListRes>

@@ -5,12 +5,11 @@ import React from 'react'
 import s from './products.module.scss'
 
 import { CardsGrid } from '../cards-grid'
-
 import { Photo } from '../photo'
 
 import { useGetTextByName } from '@/hooks'
 import { E_Locales, I_Product, I_ProductRelated } from '@/models'
-import { E_ApiPaths, lineCut } from '@/utils'
+import { E_ApiPaths, lineCut, t } from '@/utils'
 
 const path = E_ApiPaths.products
 
@@ -23,7 +22,7 @@ export const ProductsList = ({
 }) => {
   const dollar = useGetTextByName('dollar')
   const d = dollar ? Number(dollar) : 1
-  const nom = locale === E_Locales.ua ? '₴' : '$'
+  const nom = t.currency[locale]
   return (
     <CardsGrid
       items={list}
