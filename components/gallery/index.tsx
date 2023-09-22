@@ -12,16 +12,20 @@ export const Gallery = ({ photos }: { photos: string[] }) => {
     title: p,
   }))
   return (
-    <div className={s.carousel}>
-      <Carousel
-        images={images}
-        objectFit={'contain'}
-        playIcon={false}
-        style={{ height: '24rem', backgroundColor: 'transparent', borderRadius: '0.3rem' }}
-        shouldMaximizeOnClick={true}
-        shouldMinimizeOnClick={true}
-        hasIndexBoard={false}
-      />
-    </div>
+    <Carousel
+      className={s.carousel}
+      images={images}
+      objectFit={'contain'}
+      playIcon={false}
+      style={{
+        height: '90vw',
+        maxHeight: '20rem',
+        backgroundColor: 'transparent',
+        borderRadius: '0.3rem',
+      }}
+      shouldMaximizeOnClick={true}
+      shouldMinimizeOnClick={true}
+      hasIndexBoard={false}
+    />
   )
 }

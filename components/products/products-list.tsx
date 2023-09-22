@@ -27,7 +27,7 @@ export const ProductsList = ({
     <CardsGrid
       items={list}
       renderItem={(p) => (
-        <Link className={s.card_link} href={`${path}${p._id}`}>
+        <Link className={s.card_link} href={`${path}${p.url_name}`}>
           <Box sx={{ height: '100%', width: '100%' }}>
             <Box sx={{ position: 'relative', height: '70%' }}>
               <Photo

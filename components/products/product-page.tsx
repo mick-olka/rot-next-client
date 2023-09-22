@@ -67,21 +67,21 @@ export const ProductPage = ({
       <Card>
         <Grid container spacing={1} alignContent={'center'}>
           <Grid item lg={6} justifyContent={'center'}>
-            <Box sx={{ maxWidth: '700px', padding: '1rem' }}>
+            <Box sx={{ maxWidth: '100%', padding: '1rem', paddingBottom: 0 }}>
               <Breadcrumbs
-                aria-label='breadcrumb'
                 sx={{
-                  maxWidth: '90vw',
+                  maxWidth: '90%',
                   overflow: 'hidden',
+                  textOverflow: 'ellipsis',
                   // '& .MuiBreadcrumbs-ol': { flexWrap: 'nowrap' },
                 }}
               >
-                <Link underline='hover' color='inherit' href={'/'}>
+                <Link underline='always' color='inherit' href={'/'}>
                   Rotang
                 </Link>
                 {text.collection && (
                   <Link
-                    underline='hover'
+                    underline='always'
                     color='inherit'
                     href={'/collections/' + text.collection.id}
                   >
@@ -93,8 +93,6 @@ export const ProductPage = ({
                   sx={{
                     whiteSpace: 'nowrap',
                     overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                    // width: '80%',
                   }}
                 >
                   {data.name[locale]}
