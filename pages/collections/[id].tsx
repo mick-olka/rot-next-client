@@ -1,8 +1,8 @@
 import { SWRConfig } from 'swr'
 
 import { CollectionPage } from '@/components'
-import { getCollectionById, getProductsList } from '@/hooks'
-import { E_Locales, I_Product } from '@/models'
+import { getCollectionById, getProductsList, getTextById } from '@/hooks'
+import { E_Locales, I_Product, TextBlocks } from '@/models'
 import { E_ApiPaths } from '@/utils'
 
 export async function getStaticPaths() {
@@ -23,6 +23,8 @@ export async function getStaticProps({
   params: { id: string }
   locale: E_Locales
 }) {
+  const d = await getTextById(TextBlocks.dollar)
+  const dollar = d ? d.text[locale] : '1'
   const collections = await getCollectionById(params.id)
   if (!collections) return { notFound: true }
   else
@@ -33,6 +35,7 @@ export async function getStaticProps({
           [path + params.id]: collections,
         },
         locale,
+        text: { dollar },
       },
       revalidate: 60,
     }
@@ -42,14 +45,16 @@ export default function Page({
   fallback,
   id,
   locale,
+  text,
 }: {
   fallback: { [path]: I_Product }
   id: string
   locale: E_Locales
+  text: { dollar: string }
 }) {
   return (
     <SWRConfig value={{ fallback }}>
-      <CollectionPage id={id} locale={locale} />
+      <CollectionPage id={id} locale={locale} text={text} />
     </SWRConfig>
   )
 }

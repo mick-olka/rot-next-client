@@ -1,7 +1,7 @@
 import { SWRConfig } from 'swr'
 
 import { ProductPage } from '@/components'
-import { getProductById, getProductsList, getTextById } from '@/hooks'
+import { getCollectionById, getProductById, getProductsList, getTextById } from '@/hooks'
 import { E_Locales, I_Product, TextBlocks } from '@/models'
 import { E_ApiPaths } from '@/utils'
 
@@ -26,6 +26,12 @@ export async function getStaticProps({
   const product = await getProductById(params.id)
   const t = await getTextById(TextBlocks.order)
   const d = await getTextById(TextBlocks.dollar)
+  const col_id = product?.collections[0]
+  let collection: null | { id: string; name: string } = null
+  if (col_id) {
+    const coll = await getCollectionById(col_id)
+    if (coll) collection = { id: coll.url_name, name: coll.name[locale] }
+  }
   const order = t ? t.text[locale] : ''
   const dollar = d ? d.text[locale] : 1
   if (!product) return { notFound: true }
@@ -37,7 +43,7 @@ export async function getStaticProps({
           [path + params.id]: product,
         },
         locale,
-        text: { order, dollar },
+        text: { order, dollar, collection },
       },
       revalidate: 60,
     }
@@ -52,7 +58,7 @@ export default function Page({
   locale: E_Locales
   fallback: { [path]: I_Product }
   id: string
-  text: { order: string; dollar: string }
+  text: { order: string; dollar: string; collection: null | { id: string; name: string } }
 }) {
   return (
     <SWRConfig value={{ fallback }}>

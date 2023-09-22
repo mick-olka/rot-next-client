@@ -15,7 +15,6 @@ export const toasterPending = <T>(
     pending: pending || 'Loading...',
     error: {
       render({ data }) {
-        console.log(data)
         return error || 'Error'
       },
     },

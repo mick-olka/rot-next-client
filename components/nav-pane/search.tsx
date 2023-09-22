@@ -16,8 +16,11 @@ export const Search = () => {
   const [value, setValue] = useState('')
   const [search] = useDebounce(value, 500)
   const products = useGetProductsList(1, search)
-  const { locale } = useRouter()
+  const { locale, push } = useRouter()
   const list = products.data ? products.data.docs : []
+  const handleGo = (id: string) => {
+    push('/products/' + id)
+  }
   return (
     <Autocomplete
       className={s.search_pane}
@@ -27,7 +30,12 @@ export const Search = () => {
       autoHighlight
       getOptionLabel={(option) => option.name[getLocaleSafe(locale || 'ua')]}
       renderOption={(props, option) => (
-        <Box component='li' sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
+        <Box
+          component='li'
+          sx={{ '& > img': { mr: 2, flexShrink: 0 } }}
+          {...props}
+          onClick={() => handleGo(option.url_name)}
+        >
           <Photo src={option.thumbnail} sizes='25px 25px' sx={{ width: '50px', height: '50px' }} />
           {lineCut(option.name[getLocaleSafe(locale || 'ua')], 25)}
         </Box>
@@ -36,6 +44,7 @@ export const Search = () => {
       onInputChange={(e, v) => setValue(v)}
       renderInput={(params) => (
         <TextField
+          variant='outlined'
           {...params}
           // label='Search'
           size='small'

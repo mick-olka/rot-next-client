@@ -7,7 +7,6 @@ import s from './products.module.scss'
 import { CardsGrid } from '../cards-grid'
 import { Photo } from '../photo'
 
-import { useGetTextByName } from '@/hooks'
 import { E_Locales, I_Product, I_ProductRelated } from '@/models'
 import { E_ApiPaths, lineCut, t } from '@/utils'
 
@@ -16,12 +15,13 @@ const path = E_ApiPaths.products
 export const ProductsList = ({
   list,
   locale,
+  text,
 }: {
   list: I_Product[] | I_ProductRelated[]
   locale: E_Locales
+  text: { dollar: string }
 }) => {
-  const dollar = useGetTextByName('dollar')
-  const d = dollar ? Number(dollar) : 1
+  const d = Number(text.dollar)
   const nom = t.currency[locale]
   return (
     <CardsGrid

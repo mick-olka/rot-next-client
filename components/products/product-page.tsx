@@ -1,17 +1,20 @@
 import PhoneInTalkRoundedIcon from '@mui/icons-material/PhoneInTalkRounded'
 import {
   Box,
+  Breadcrumbs,
   Button,
   Card,
   FormControl,
   Grid,
   InputLabel,
+  Link,
   Menu,
   MenuItem,
   Select,
   SelectChangeEvent,
   Typography,
 } from '@mui/material'
+import parse from 'html-react-parser'
 
 import { useMemo, useState } from 'react'
 
@@ -29,7 +32,7 @@ export const ProductPage = ({
 }: {
   id: string
   locale: E_Locales
-  text: { order: string; dollar: string }
+  text: { order: string; dollar: string; collection: null | { id: string; name: string } }
 }) => {
   const { data } = useGetProductById(id)
   const d = Number(text.dollar)
@@ -65,6 +68,38 @@ export const ProductPage = ({
         <Grid container spacing={1} alignContent={'center'}>
           <Grid item lg={6} justifyContent={'center'}>
             <Box sx={{ maxWidth: '700px', padding: '1rem' }}>
+              <Breadcrumbs
+                aria-label='breadcrumb'
+                sx={{
+                  maxWidth: '90vw',
+                  overflow: 'hidden',
+                  // '& .MuiBreadcrumbs-ol': { flexWrap: 'nowrap' },
+                }}
+              >
+                <Link underline='hover' color='inherit' href={'/'}>
+                  Rotang
+                </Link>
+                {text.collection && (
+                  <Link
+                    underline='hover'
+                    color='inherit'
+                    href={'/collections/' + text.collection.id}
+                  >
+                    {text.collection.name}
+                  </Link>
+                )}
+                <Typography
+                  color='text.primary'
+                  sx={{
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    // width: '80%',
+                  }}
+                >
+                  {data.name[locale]}
+                </Typography>
+              </Breadcrumbs>
               <Gallery photos={all_photos} />
             </Box>
           </Grid>
@@ -157,7 +192,8 @@ export const ProductPage = ({
                   </Typography>
                 </Box>
                 <Box sx={{ padding: '1rem 0', fontSize: '18px', lineHeight: '25px' }}>
-                  <p dangerouslySetInnerHTML={{ __html: data.description[locale] }}></p>
+                  {/* <p dangerouslySetInnerHTML={{ __html: data.description[locale] }}></p> */}
+                  {parse(data.description[locale])}
                 </Box>
               </Box>
             </Box>
@@ -165,11 +201,19 @@ export const ProductPage = ({
           <Grid item lg={6} md={12} sm={12} xs={12}>
             <Box sx={{ padding: '1rem' }}>
               {data.features[locale].map((f) => (
-                <Box key={f.key} sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                <Box
+                  key={f.key}
+                  sx={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}
+                >
                   <Typography fontFamily='inherit' fontWeight={600} fontSize='19px'>
                     {f.key}:
                   </Typography>
-                  <Typography fontFamily='inherit' textAlign={'right'} fontSize='19px'>
+                  <Typography
+                    fontFamily='inherit'
+                    textAlign={'right'}
+                    fontSize='19px'
+                    marginLeft='auto'
+                  >
                     {f.value}
                   </Typography>
                 </Box>
