@@ -30,20 +30,20 @@ export default function App({ Component, pageProps, router }: AppProps) {
     <>
       <Head>
         <meta name='viewport' content='width=device-width, initial-scale=1' />
-        <meta name='description' content='Created by mick-olka' />
+        {/* <meta name='description' content='Created by mick-olka' /> */}
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <DefaultSeo
-        titleTemplate='R.UA %s'
+        titleTemplate='Rotang | %s'
         openGraph={{
           type: 'website',
           locale: 'en_IE',
           url,
-          description: 'The Next js template from Mick',
-          site_name: 'Next js template by Mick',
+          description: 'Rotang.ua',
+          site_name: 'Rotang.ua',
           images: [
             {
-              url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Cat_August_2010-4.jpg/181px-Cat_August_2010-4.jpg',
+              url: 'https://rotang.ua/api/upload/С_отражением_на_столе_41648625681377.jpg',
             },
           ],
         }}

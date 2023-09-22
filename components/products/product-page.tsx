@@ -63,7 +63,7 @@ export const ProductPage = ({
   }
   const l = t.product
   return (
-    <MainLayout title={data.name[locale]} description='Some Product'>
+    <MainLayout title={data.name[locale]} description={data.description[locale]}>
       <Card>
         <Grid container spacing={1} alignContent={'center'}>
           <Grid item lg={6} justifyContent={'center'}>

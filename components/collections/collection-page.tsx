@@ -15,7 +15,7 @@ export const CollectionPage = ({
 }) => {
   const { data } = useGetCollectionById(id)
   return (
-    <MainLayout title={data.name.ua} description='Some Product'>
+    <MainLayout title={data.name.ua} description={data.description[locale]}>
       <h1 style={{ textAlign: 'center' }}>{data.name.ua}</h1>
       <ProductsList list={data.items} locale={locale} text={text} />
     </MainLayout>
