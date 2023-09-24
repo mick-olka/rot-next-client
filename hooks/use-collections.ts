@@ -15,9 +15,14 @@ export const getCollectionsList = async (): Promise<I_Collection[]> => {
   } else throw new Error(String(res.body))
 }
 
-export const useGetCollectionsList = () => {
+export const useGetCollectionsListFallback = () => {
   const data = useSWR<I_Collection[]>(path, fetcher)
   return data as I_SWR_Fallback<I_Collection[]>
+}
+
+export const useGetCollectionsList = () => {
+  const { data } = useSWR<I_Collection[]>('/collections', fetcher)
+  return data
 }
 
 export const getCollectionById = async (id: string): Promise<I_Collection | null> => {

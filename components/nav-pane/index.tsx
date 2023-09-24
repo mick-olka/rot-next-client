@@ -20,6 +20,7 @@ import s from './nav-pane.module.scss'
 
 import { Search } from './search'
 
+import { useGetCollectionsList } from '@/hooks'
 import Logo from '@/public/logo.svg'
 
 import { v } from '@/styles/variables'
@@ -29,6 +30,7 @@ export const NavPane = () => {
   const [mobileOpen, setMobileOpen] = useState(false)
   const { locale } = useRouter()
   const lan = getLocaleSafe(locale || 'ua')
+  const cat = useGetCollectionsList()
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
@@ -41,8 +43,8 @@ export const NavPane = () => {
           <Image src={Logo} alt={'Logo'} priority />
         </Link>
       </Toolbar>
-      <Divider />
       <Search />
+      {/* <Divider sx={{ marginTop: '1rem' }} /> */}
       <List>
         {links.map((l) => (
           <Link href={l.path} key={l.path} onClick={() => setMobileOpen(false)}>
@@ -56,6 +58,26 @@ export const NavPane = () => {
             </ListItem>
           </Link>
         ))}
+      </List>
+      <Divider />
+      <List>
+        {cat &&
+          cat.map((c) => (
+            <Link
+              href={'/collections/' + c.url_name}
+              key={c.url_name}
+              onClick={() => setMobileOpen(false)}
+            >
+              <ListItem disablePadding>
+                <ListItemButton>
+                  {/* <ListItemIcon>
+                <AddRoundedIcon />
+              </ListItemIcon> */}
+                  <ListItemText primary={c.name[lan]} />
+                </ListItemButton>
+              </ListItem>
+            </Link>
+          ))}
       </List>
       <Divider />
     </div>
