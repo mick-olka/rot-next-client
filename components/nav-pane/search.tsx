@@ -1,3 +1,4 @@
+'use client'
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded'
 import { Autocomplete, Box, TextField } from '@mui/material'
 import { useRouter } from 'next/router'
@@ -9,13 +10,14 @@ import s from './nav-pane.module.scss'
 
 import { Photo } from '../photo'
 
-import { useGetProductsList } from '@/hooks'
+import { useGetProductsList, usePaginator } from '@/hooks'
 import { getLocaleSafe, lineCut } from '@/utils'
 
 export const Search = () => {
+  const { getPage } = usePaginator()
   const [value, setValue] = useState('')
   const [search] = useDebounce(value, 500)
-  const products = useGetProductsList(1, search)
+  const products = useGetProductsList(getPage(), search)
   const { locale, push } = useRouter()
   const list = products.data ? products.data.docs : []
   const handleGo = (id: string) => {

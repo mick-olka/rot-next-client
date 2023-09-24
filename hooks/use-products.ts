@@ -9,7 +9,7 @@ const path = E_ApiPaths.products
 
 // for preload
 export const getProductsList = async (): Promise<I_ProductsListRes> => {
-  const res = await fetch(getURL(path + '?limit=1'))
+  const res = await fetch(getURL(path + '?limit=21'))
   if (res.ok) {
     return await res.json()
   } else throw new Error(String(res.body))
@@ -17,22 +17,13 @@ export const getProductsList = async (): Promise<I_ProductsListRes> => {
 
 // for general use
 export const useGetProductsList = (p = 1, regex?: string) => {
-  // const [page, setPage] = useState(1)
-  // if (page) url = url + `?page=${page || 1}`
-  // if (filter)
-  //   Object.entries(filter).forEach(([k, v]) => {
-  //     if (v) url = url + `&${k}=${v}`
-  //   })
-  // if (filter.query) url = url + `&regex=${filter.query}`
-  // if (filter.age) url = url + `&age=${filter.age}`
-  // if (filter.country) url + `&country=${filter.country}`
   const query = regex ? `?limit=21&page=${p}&regex=${regex}` : `?limit=21&page=${p}`
   const data = useSWR<I_ProductsListRes>(path, getFetcher(query), {
     // refreshInterval: 50,
   })
   useEffect(() => {
     mutate(path)
-  }, [p, regex, data])
+  }, [p, regex])
   return data as I_SWR_Fallback<I_ProductsListRes>
 }
 

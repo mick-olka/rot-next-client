@@ -10,5 +10,10 @@ export const usePaginator = () => {
     setPage(p)
     localStorage.setItem('page', String(p))
   }
-  return { page, onPageChange }
+  const getPage = (): number => {
+    const p = localStorage.getItem('page')
+    if (p) return Number(p)
+    return 1
+  }
+  return { page, onPageChange, getPage }
 }
