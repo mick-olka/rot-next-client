@@ -19,12 +19,13 @@ export const ProductsPage = ({
   const handlePageChange = (e: unknown, p: number) => {
     onPageChange(p)
   }
+
   return (
     <MainLayout description='Products Page' title='Products'>
       {text && <h2 className={s.text}>{text.main_text}</h2>}
       <ProductsList list={data.docs} locale={locale} text={text} />
       <Pagination
-        count={10}
+        count={Math.ceil(data.count / 21)}
         page={page}
         onChange={handlePageChange}
         size='large'
