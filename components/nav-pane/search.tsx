@@ -10,16 +10,15 @@ import s from './nav-pane.module.scss'
 
 import { Photo } from '../photo'
 
-import { useGetProductsList, usePaginator } from '@/hooks'
+import { usePaginator, useSearchProductsList } from '@/hooks'
 import { getLocaleSafe, lineCut } from '@/utils'
 
 export const Search = () => {
-  const { getPage } = usePaginator()
   const [value, setValue] = useState('')
   const [search] = useDebounce(value, 500)
-  const products = useGetProductsList(getPage(), search)
+  const products = useSearchProductsList(search)
   const { locale, push } = useRouter()
-  const list = products.data ? products.data.docs : []
+  const list = products ? products.docs : []
   const handleGo = (id: string) => {
     push('/products/' + id)
   }
