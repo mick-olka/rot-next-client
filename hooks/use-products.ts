@@ -9,14 +9,14 @@ const path = E_ApiPaths.products
 
 // for preload
 export const getProductsList = async (): Promise<I_ProductsListRes> => {
-  const res = await fetch(getURL(path + '?limit=21'))
+  const res = await fetch(getURL(path + '?limit=1'))
   if (res.ok) {
     return await res.json()
   } else throw new Error(String(res.body))
 }
 
 // for general use
-export const useGetProductsList = (p = 2, regex?: string) => {
+export const useGetProductsList = (p = 1, regex?: string) => {
   // const [page, setPage] = useState(1)
   // if (page) url = url + `?page=${page || 1}`
   // if (filter)
@@ -28,10 +28,9 @@ export const useGetProductsList = (p = 2, regex?: string) => {
   // if (filter.country) url + `&country=${filter.country}`
   const query = regex ? `?limit=21&page=${p}&regex=${regex}` : `?limit=21&page=${p}`
   const data = useSWR<I_ProductsListRes>(path, getFetcher(query), {
-    // refreshInterval: 5000,
+    // refreshInterval: 50,
   })
   useEffect(() => {
-    // data.mutate()
     mutate(path)
   }, [p, regex, data])
   return data as I_SWR_Fallback<I_ProductsListRes>

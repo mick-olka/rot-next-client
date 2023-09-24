@@ -1,4 +1,4 @@
-import { SWRConfig } from 'swr'
+import { SWRConfig, unstable_serialize } from 'swr'
 
 import { ProductsPage } from '../components/products'
 
