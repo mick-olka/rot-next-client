@@ -64,15 +64,16 @@ export const ProductPage = ({
   const l = t.product
   return (
     <MainLayout title={data.name[locale]} description={data.description[locale]}>
-      <Card>
+      <Card sx={{ position: 'relative', maxWidth: '99vw' }}>
         <Grid container spacing={1} alignContent={'center'}>
           <Grid item lg={6} justifyContent={'center'}>
             <Box sx={{ maxWidth: '100%', padding: '1rem', paddingBottom: 0 }}>
               <Breadcrumbs
                 sx={{
-                  maxWidth: '90%',
+                  maxWidth: '100%',
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
+                  fontSize: '15px',
                   // '& .MuiBreadcrumbs-ol': { flexWrap: 'nowrap' },
                 }}
               >
@@ -88,13 +89,7 @@ export const ProductPage = ({
                     {text.collection.name}
                   </Link>
                 )}
-                <Typography
-                  color='text.primary'
-                  sx={{
-                    whiteSpace: 'nowrap',
-                    overflow: 'hidden',
-                  }}
-                >
+                <Typography color='text.primary' sx={{ fontSize: '15px' }}>
                   {data.name[locale]}
                 </Typography>
               </Breadcrumbs>
@@ -113,6 +108,7 @@ export const ProductPage = ({
                 textOverflow='ellipsis'
                 overflow='hidden'
                 padding='1rem'
+                maxWidth='90vw'
               >
                 {data.name[locale]}
               </Typography>

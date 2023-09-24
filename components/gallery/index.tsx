@@ -22,6 +22,7 @@ export const Gallery = ({ photos }: { photos: string[] }) => {
         maxHeight: '20rem',
         backgroundColor: 'transparent',
         borderRadius: '0.3rem',
+        maxWidth: '85vw',
       }}
       shouldMaximizeOnClick={true}
       shouldMinimizeOnClick={true}
