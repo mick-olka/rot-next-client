@@ -1,7 +1,6 @@
 import Image from 'next/image'
 
 import s from './footer.module.scss'
-import { SocialLinks } from './social-links'
 
 import Logo from '@/public/logo.svg'
 

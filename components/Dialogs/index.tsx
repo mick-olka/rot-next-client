@@ -11,7 +11,7 @@ import { TransitionProps } from '@mui/material/transitions'
 
 import * as React from 'react'
 
-import s from './dialogs.module.scss'
+// import s from './dialogs.module.scss'
 
 interface I_Props {
   children: React.ReactNode
