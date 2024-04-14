@@ -38,7 +38,7 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <meta name='description' content='Created by mick-olka' />
+          <meta name='description' content='Rotang.ua' />
           <link rel='icon' href='/favicon.ico' />
         </Head>
         <body>

@@ -6,7 +6,7 @@ import s from './cards-grid.module.scss'
 import { SquareCard } from '../card'
 
 export const CardsGrid = <T extends { _id: string }>({
-  items,
+  items = [],
   renderItem,
   cardHeight,
 }: {

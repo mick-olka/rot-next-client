@@ -14,12 +14,12 @@ import { LocalesSelector } from './locales-selector'
 import { useGetTextByName } from '@/hooks'
 import { TextBlocks } from '@/models'
 import Logo from '@/public/logo.svg'
-import { phones } from '@/utils'
 
 export const Header = () => {
   const theme = useTheme()
   const matches = useMediaQuery(theme.breakpoints.up('md'))
   const ht = useGetTextByName(TextBlocks.header_text)
+  const phones = useGetTextByName(TextBlocks.phones)
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -54,7 +54,7 @@ export const Header = () => {
         {!matches && buttons}
       </div>
       <div className={s.HeaderContentCenter} style={{ maxWidth: matches ? '50%' : '100%' }}>
-        <p>{ht || ''}</p>
+        <h1>{ht || ''}</h1>
       </div>
       {matches && buttons}
       <Menu
@@ -68,10 +68,10 @@ export const Header = () => {
         sx={{ top: '5px' }}
       >
         <div style={{ padding: '10px', textAlign: 'center', fontWeight: '600' }}>09:00 - 20:00</div>
-        {phones.map((p) => (
-          <MenuItem key={p.label} style={{ textDecoration: 'underline' }}>
-            <a href={p.link}>
-              <Typography fontSize='20px'>{p.label}</Typography>
+        {phones?.split(';').map((p) => (
+          <MenuItem key={p} style={{ textDecoration: 'underline' }}>
+            <a href={'tel:' + p}>
+              <Typography fontSize='20px'>{p}</Typography>
             </a>
           </MenuItem>
         ))}

@@ -61,8 +61,8 @@ export const NavPane = () => {
       </List>
       <Divider />
       <List>
-        {cat &&
-          cat.map((c) => (
+        {cat.data &&
+          cat.data.map((c) => (
             <Link
               href={'/collections/' + c.url_name}
               key={c.url_name}

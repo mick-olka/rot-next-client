@@ -21,8 +21,8 @@ export const useGetCollectionsListFallback = () => {
 }
 
 export const useGetCollectionsList = () => {
-  const { data } = useSWR<I_Collection[]>('/collections', fetcher)
-  return data
+  const res = useSWR<I_Collection[]>(path, fetcher)
+  return res
 }
 
 export const getCollectionById = async (id: string): Promise<I_Collection | null> => {

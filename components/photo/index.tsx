@@ -4,7 +4,19 @@ import React from 'react'
 
 import { photo_url } from '@/utils'
 
-export const Photo = ({ src, sizes, sx }: { src: string; sizes?: string; sx?: SxProps }) => {
+export const Photo = ({
+  src,
+  sizes,
+  sx,
+  alt,
+  title,
+}: {
+  alt?: string
+  title?: string
+  src: string
+  sizes?: string
+  sx?: SxProps
+}) => {
   return (
     <Box
       sx={{
@@ -18,7 +30,8 @@ export const Photo = ({ src, sizes, sx }: { src: string; sizes?: string; sx?: Sx
     >
       <Image
         src={photo_url + src}
-        alt={'R'}
+        alt={alt || 'photo'}
+        title={title}
         fill
         sizes={sizes}
         priority

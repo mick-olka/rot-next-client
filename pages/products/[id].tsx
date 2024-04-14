@@ -26,6 +26,7 @@ export async function getStaticProps({
   const product = await getProductById(params.id)
   const t = await getTextById(TextBlocks.order)
   const d = await getTextById(TextBlocks.dollar)
+  const p = await getTextById(TextBlocks.phones)
   const col_id = product?.collections[0]
   let collection: null | { id: string; name: string } = null
   if (col_id) {
@@ -34,6 +35,7 @@ export async function getStaticProps({
   }
   const order = t ? t.text[locale] : ''
   const dollar = d ? d.text[locale] : 1
+  const phones = p ? p.text[locale] : ''
   if (!product) return { notFound: true }
   else
     return {
@@ -43,7 +45,7 @@ export async function getStaticProps({
           [path + params.id]: product,
         },
         locale,
-        text: { order, dollar, collection },
+        text: { order, dollar, collection, phones },
       },
       revalidate: 60,
     }
@@ -58,7 +60,12 @@ export default function Page({
   locale: E_Locales
   fallback: { [path]: I_Product }
   id: string
-  text: { order: string; dollar: string; collection: null | { id: string; name: string } }
+  text: {
+    order: string
+    dollar: string
+    collection: null | { id: string; name: string }
+    phones: string
+  }
 }) {
   return (
     <SWRConfig value={{ fallback }}>

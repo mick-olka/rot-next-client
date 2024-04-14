@@ -11,7 +11,8 @@ import s from './app.module.scss'
 import '@/styles/global.scss'
 
 import { Header, Footer, NavPane } from '@/components'
-import { usePageLoading } from '@/hooks'
+import { useGetTextByName, usePageLoading } from '@/hooks'
+import { TextBlocks } from '@/models'
 import { vars } from '@/styles'
 
 import '@/styles/normalize.scss'
@@ -25,6 +26,8 @@ const roboto = Roboto_Condensed({
 
 export default function App({ Component, pageProps, router }: AppProps) {
   const { isPageLoading } = usePageLoading()
+  const title = useGetTextByName(TextBlocks.tab_title)
+  const description = useGetTextByName(TextBlocks.main_description)
   const url = `${local_url}${router.route}`
   return (
     <>
@@ -34,12 +37,12 @@ export default function App({ Component, pageProps, router }: AppProps) {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <DefaultSeo
-        titleTemplate='Rotang | %s'
+        titleTemplate={title || 'Rotang.ua'}
         openGraph={{
           type: 'website',
           locale: 'en_IE',
           url,
-          description: 'Rotang.ua',
+          description: description || 'description',
           site_name: 'Rotang.ua',
           images: [
             {

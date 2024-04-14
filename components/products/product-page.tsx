@@ -23,7 +23,7 @@ import { Gallery } from '../gallery'
 import { useGetProductById } from '@/hooks'
 import { MainLayout } from '@/layouts'
 import { E_Locales } from '@/models'
-import { phones, t } from '@/utils'
+import { t } from '@/utils'
 
 export const ProductPage = ({
   id,
@@ -32,7 +32,12 @@ export const ProductPage = ({
 }: {
   id: string
   locale: E_Locales
-  text: { order: string; dollar: string; collection: null | { id: string; name: string } }
+  text: {
+    order: string
+    dollar: string
+    collection: null | { id: string; name: string }
+    phones: string
+  }
 }) => {
   const { data } = useGetProductById(id)
   const d = Number(text.dollar)
@@ -170,9 +175,9 @@ export const ProductPage = ({
                     <div style={{ padding: '10px', textAlign: 'center', fontWeight: '600' }}>
                       09:00 - 20:00
                     </div>
-                    {phones.map((p) => (
-                      <MenuItem key={p.label} style={{ textDecoration: 'underline' }}>
-                        <a href={p.link}>{p.label}</a>
+                    {text.phones.split(';').map((p) => (
+                      <MenuItem key={p} style={{ textDecoration: 'underline' }}>
+                        <a href={'tel:' + p}>{p}</a>
                       </MenuItem>
                     ))}
                   </Menu>

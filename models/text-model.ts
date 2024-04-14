@@ -13,4 +13,8 @@ export enum TextBlocks {
   header_text = 'header_text',
   dollar = 'dollar',
   order = 'order',
+  tab_title = 'tab_title',
+  bottom_text = 'bottom_text',
+  main_description = 'main_description',
+  phones = 'phones',
 }

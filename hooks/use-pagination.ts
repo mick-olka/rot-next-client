@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react'
 export const usePaginator = () => {
   const params = useSearchParams()
   const r = useRouter()
-  // console.log(params.getAll('page'))
   const [page, setPage] = useState(1)
   useEffect(() => {
     const p = localStorage.getItem('page')

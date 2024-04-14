@@ -1,6 +1,4 @@
-import { Skeleton } from '@mui/material'
 import { useRouter } from 'next/router'
-import { ReactNode } from 'react'
 import useSWR from 'swr'
 
 import { E_Locales, I_TextBlock } from '@/models'
